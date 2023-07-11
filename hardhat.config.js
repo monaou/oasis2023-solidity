@@ -26,10 +26,11 @@ module.exports = {
     hardhat: {
     },
     hmvtest: {
-      url: 'https://rpc.testnet.oasys.homeverse.games/',
-      chainId: 40875,
+      url: 'https://rpc.sandverse.oasys.games',
+      chainId: 20197,
       gasPrice: 0,
       accounts: [
+        '0xa267530f49f8280200edf313ee7af6b827f2a8bce2897751d06a843f644967b1'
         // Provide your private key here
         // Remove comment out to use value from secrets.json
         //PRIVATE_KEY

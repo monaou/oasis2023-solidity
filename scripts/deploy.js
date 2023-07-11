@@ -1,18 +1,27 @@
-const hre = require("hardhat");
+const fs = require('fs');
 
 // Type your own PUBLIC key in here
-const recipientAddress = ''
+const recipientAddress = '0xFABB0ac9d68B0B445fB7357272Ff202C5651694a';
 
 async function main() {
-  const DinoRunner = await hre.ethers.getContractFactory("DinoRunner");
+  const DinoRunner = await ethers.getContractFactory("StageContract");
   const dinoRunner = await DinoRunner.deploy();
 
   await dinoRunner.deployed();
   console.log("Dino Runner contract deployed to:", dinoRunner.address);
 
-  const mintTokenTx = await dinoRunner.mint(recipientAddress);
-  await mintTokenTx.wait();
-  console.log(`Minted token to ${recipientAddress}`)
+  // アドレスをオブジェクトとして作成
+  const addressObject = {
+    dinoRunnerAddress: dinoRunner.address
+  };
+
+  // JSON形式でオブジェクトを文字列に変換
+  const jsonData = JSON.stringify(addressObject, null, 2);
+
+  // JSONデータをファイルに書き込む
+  fs.writeFileSync('dinoRunnerAddress.json', jsonData);
+
+  console.log("Dino Runner address saved to: dinoRunnerAddress.json");
 }
 
 main()
