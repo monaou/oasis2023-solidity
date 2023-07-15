@@ -19,6 +19,8 @@ contract StageContract {
     }
 
     uint[] public stageIds;
+    string[] public stageNames;
+    address[] public stageAdderss;
     mapping(uint => Data) public dataMap;
     mapping(address => uint[]) public accountStages;
     mapping(address => string[]) public accountNames;
@@ -39,6 +41,8 @@ contract StageContract {
         }
 
         stageIds.push(_stageID);
+        stageNames.push(_name);
+        stageAdderss.push(_addr);
         accountStages[_addr].push(_stageID);
         accountNames[_addr].push(_name);
     }
@@ -62,6 +66,14 @@ contract StageContract {
 
     function getStageIds() public view returns (uint[] memory) {
         return stageIds;
+    }
+
+    function getStageNames() public view returns (string[] memory) {
+        return stageNames;
+    }
+
+    function getStageAddress() public view returns (address[] memory) {
+        return stageAdderss;
     }
 
     function getAccountStages(address _addr) public view returns (uint[] memory) {
