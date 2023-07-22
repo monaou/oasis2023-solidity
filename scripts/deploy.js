@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 // Type your own PUBLIC key in here
-const recipientAddress = '0xFABB0ac9d68B0B445fB7357272Ff202C5651694a';
 
 async function main() {
   const DinoRunner = await ethers.getContractFactory("StageContract");
